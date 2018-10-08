@@ -48,7 +48,7 @@ class App extends Component {
       case "5bb425bccc7ed83ee3cfbd8c":
         return "Door";
       case "5bb425bccc7ed83ee3cfbd8d":
-        return "Thermite"
+        return "Thermite";
 
       default:
         return "Unknown";
@@ -90,9 +90,17 @@ class App extends Component {
                   <b>Person</b>: <i>NYI</i>
                 </p>
                 <p>
+                  <b>Contact duration</b>:{" "}
+                  {event.contact_duration ? (
+                    event.contact_duration + "ms"
+                  ) : (
+                    <i>No contact for this type</i>
+                  )}
+                </p>
+                <p>
                   <b>Coordinator</b>:{" "}
-                  {event.event_coordinator ? (
-                    this.getObjectName(event.event_coordinator)
+                  {event.object_coordinator ? (
+                    this.getObjectName(event.object_coordinator)
                   ) : (
                     <i>No coordinator for this type</i>
                   )}
