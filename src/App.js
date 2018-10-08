@@ -15,9 +15,29 @@ class App extends Component {
       event_session_started: null,
       events: []
     };
+
+    this.refreshAPI = this.refreshAPI.bind(this);
   }
 
   componentDidMount() {
+    this.API.getLatestEventSession(data => {
+      let events = data.event_session.events;
+      events.sort((a, b) => {
+        return new Date(b.when_occured) - new Date(a.when_occured);
+      });
+
+      this.setState({
+        event_session_id: data.event_session.id,
+        event_session_name: data.event_session.name,
+        event_session_started: data.event_session.when_started,
+        events: events
+      });
+    }, console.error);
+
+    setInterval(this.refreshAPI, 1000);
+  }
+
+  refreshAPI() {
     this.API.getLatestEventSession(data => {
       let events = data.event_session.events;
       events.sort((a, b) => {
