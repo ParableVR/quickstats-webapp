@@ -30,3 +30,20 @@
     transform: rotate(360deg);
   }
 }
+
+.event {
+  text-align: left;
+  width: 40vw;
+  margin: 0 auto;
+  padding: 5px 20px;
+
+  background: #aaa;
+}
+
+.event:nth-child(even) {
+  background: #ddd;
+}
+
+.event p {
+  margin: 0;
+}
